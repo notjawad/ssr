@@ -39,6 +39,7 @@ class App(tk.Tk):
 
         self.create_remote_layout()
         self.create_menu()
+        self.create_binds()
 
     def create_remote_layout(self):
 
@@ -162,6 +163,7 @@ class App(tk.Tk):
             self.arrow_frame,
             text="Up",
             width=5,
+            command=self.up,
         )
         self.up_button.grid(row=0, column=1, pady=5, padx=5)
 
@@ -293,6 +295,15 @@ class App(tk.Tk):
         self.image_label.bind(
             "<Button-1>", lambda e: open_url("https://github.com/notjawad")
         )
+
+    def create_binds(self):
+        self.bind("<Up>", lambda e: self.up())
+        self.bind("<Down>", lambda e: self.down())
+        self.bind("<Left>", lambda e: self.left())
+        self.bind("<Right>", lambda e: self.right())
+        self.bind("<Return>", lambda e: self.ok())
+        self.bind("<BackSpace>", lambda e: self.back())
+        self.bind("<Escape>", lambda e: self.home())
 
     def create_menu(self):
 
